@@ -1,0 +1,33 @@
+java_home: C:\Program Files\Java\jdk1.8.0_231
+
+mysql: C:\Program Files\MySQL\MySQL Server 8.0\bin
+
+npm proxy: npm config set proxy http://10.3.79.253:3128
+
+maven proxy:
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                      http://maven.apache.org/xsd/settings-1.0.0.xsd">
+  <localRepository/>
+  <interactiveMode/>
+  <usePluginRegistry/>
+  <offline/>
+  <pluginGroups/>
+  <servers/>
+  <mirrors/>
+  <proxies>
+    <proxy>
+      <id>myproxy</id>
+      <active>true</active>
+      <protocol>http</protocol>
+      <host>10.3.79.253</host>
+      <port>3128</port>
+      <username></username>
+      <password></password>
+      <nonProxyHosts>localhost|127.0.0.1</nonProxyHosts>
+    </proxy>
+  </proxies>
+  <profiles/>
+  <activeProfiles/>
+</settings>
