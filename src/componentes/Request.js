@@ -110,7 +110,7 @@ export const ERRO = (err) => {
     if (err.status >= 500)
         err.text().then(errorMessage => {
             console.log(errorMessage)
-            if (errorMessage != undefined) alertaErros[errorMessage]()
+            if (errorMessage !== undefined) alertaErros[errorMessage]()
         })
     else
         if (err.status >= 400) alert("Ops! Erro: " + err.status + " \nO servidor não conseguiu processar esta requisição.")
