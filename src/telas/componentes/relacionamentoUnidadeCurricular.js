@@ -33,12 +33,12 @@ class RelacionamentoUnidadeCurricular extends React.Component {
             unidadeCurricularListaTouch: valor,
             unidadeCurricular:
                 this.state.unidadeCurricular.filter(value => {
-                    if (valor == null | valor == undefined)
+                    if (valor === null | valor === undefined)
                         return true
                     return value.nome.includes(valor.nome) ? true : false
                 })
         })
-        if (valor == null | valor == undefined) await this.atualizarUnidadeCurricular()
+        if (valor === null | valor === undefined) await this.atualizarUnidadeCurricular()
     }
 
     async componentDidMount() {
@@ -80,11 +80,11 @@ class RelacionamentoUnidadeCurricular extends React.Component {
 
     async click(id, decisao) {
         let o = await this.state.lista.filter((elem, index) => {
-            return elem.id != id
+            return elem.id !== id
         })
         if (decisao) {
             await this.state.unidadeCurricular.filter((elem, index) => {
-                return elem.id == id
+                return elem.id === id
             }).forEach((elem, index) => {
                 if (elem.id == id) o.push(elem)
             })
@@ -124,7 +124,7 @@ class RelacionamentoUnidadeCurricular extends React.Component {
                                     <div className="w-25">
                                         <div className="caixa_detalhe disponivelDescriptionBox">
                                             <div style={{ textAlign: "center" }}>
-                                                Area de conhecimento
+                                                Segmento Tecnológico
                                             </div>
                                             <div className="flexbox">
                                                 <div className="w-25">
@@ -153,7 +153,7 @@ class RelacionamentoUnidadeCurricular extends React.Component {
                                     <div className="flexbox w-full">
                                         <div className="boxContainer w-50">
                                             <div className="boxtitle">Unidade curricular</div>
-                                            <div className="boxItens">
+                                            <div className="boxItens rolagem">
                                                 <Autocomplete
                                                     options={unidadeCurricular}
                                                     value={unidadeCurricularListaTouch}
@@ -184,7 +184,7 @@ class RelacionamentoUnidadeCurricular extends React.Component {
                                         </div>
                                         <div className="boxContainer w-50">
                                             <div className="boxtitle">Relacionado</div>
-                                            <div className="boxItens">
+                                            <div className="boxItens rolagem">
                                                 {
                                                     this.organizaListaPorNome(lista).length > 0 ?
                                                         lista.map(res => {

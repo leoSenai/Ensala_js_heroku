@@ -1,8 +1,10 @@
 const express = require('express')
-
+const cors = require('cors')
 const app = express()
 
 const baseDir = `${__dirname}/build/`
+
+app.use(cors())
 
 app.use(express.static(`${baseDir}`))
 

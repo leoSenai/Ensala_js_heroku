@@ -187,7 +187,7 @@ class AreaConhecimento extends React.Component {
           <ContainerFade>
             <Row>
               <div className="titulo">
-                <h1>Área de conhecimento</h1>
+                <h1>Segmento Tecnológico</h1>
               </div>
             </Row>
             <div className="cadastro">

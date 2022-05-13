@@ -240,7 +240,7 @@ class Professor extends React.Component {
         o.matricula = st.matricula__;
         o.telefone = st.telefone__;
         o.permissao = st.permissao__;
-        if (st.mudaSenha != "none") {
+        if (st.mudaSenha !== "none") {
           if (!st.senha__.isEmpty()) {
             if (st.senha__.length > 4) {
               if (st.senha__.equals(st.confirmar__)) {
@@ -348,7 +348,7 @@ class Professor extends React.Component {
   }
 
   toggleModalConfirmacaoFunc(callback) {
-    if (callback != undefined)
+    if (callback !== undefined)
       this.setState({
         toggleModalConfirmacao: callback,
       });

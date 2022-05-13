@@ -40,7 +40,7 @@ class Competencia extends React.Component {
             unidadeCurricularListaTouch: valor,
             unidadeCurricular:
                 this.state.cacheUnidadeCurricular.filter(value => {
-                    if (valor == null | valor == undefined)
+                    if (valor === null | valor === undefined)
                         return true
                     return value.nome.includes(valor.nome) ? true : false
                 })
@@ -107,8 +107,8 @@ class Competencia extends React.Component {
                 areaconhecimento.forEach(elem => {
                     const newLista = elem.unidadeCurricular.filter(elem => {
                         return unidadeCurricular.filter(elemUnidade => {
-                            return elemUnidade.id == elem.id
-                        }).length == 0
+                            return elemUnidade.id === elem.id
+                        }).length === 0
                     })
                     if (elem.check) unidadeCurricular = unidadeCurricular.concat(newLista)
                 })
@@ -372,7 +372,7 @@ class Competencia extends React.Component {
                                     <div className="w-3">
                                         <div className="boxContainer">
                                             <div className="boxtitle">Área de conhecimento</div>
-                                            <div className="boxItens">
+                                            <div className="boxItens rolagem">
                                                 {
                                                     this.organizaListaPorNome(this.state.areaConhecimento).map(res => {
                                                         if (res.check === undefined) res.check = false;
@@ -409,7 +409,7 @@ class Competencia extends React.Component {
                                                     />
                                                 )}
                                             />
-                                            <div className="boxItens">
+                                            <div className="boxItens rolagem">
                                                 {
 
                                                     this.organizaListaPorNome(unidadeCurricular).map(res => {
@@ -465,7 +465,7 @@ class Competencia extends React.Component {
                                             <tbody>
                                                 {this.state.listaCorrente.map(o => {
                                                     let focus = {}
-                                                    if (o.id === this.state.id) focus = { backgroundColor: '#009785', color: "white" }
+                                                    if (o.id === this.state.id) focus = { backgroundColor: '#0047B6', color: "white" }
                                                     return (
                                                         <tr style={focus} key={o.id} onClick={() => this.buscaItem(o.id)}>
                                                             <td>{o.id}</td>

@@ -19,13 +19,13 @@ p{
   border-bottom-right-radius: 5px;
 }
 .btn-login{
-  background-color:#009785 !important;
+  background-color:#0047B6 !important;
   border:none !important;
 
 }
 .btn-login:hover{
   box-shadow: 0px 0px 0px 2px #c1c2c2;
-  background-color:#009785 !important;
+  background-color:#0047B6 !important;
 }
 .btn.btn-outline-secondary, .btn.btn-outline-success{
   color:black !important;
@@ -37,7 +37,7 @@ p{
   color:white !important;
 }
 .txtLogo{
-  color:#006858;
+  color:#0047B6;
   margin-bottom: 25px;
 }
 
@@ -115,7 +115,7 @@ a{
   text-decoration: none !important;
 }
 th{
-  background-color: #006858;
+  background-color: #0047B6;
   color: white;
 }
 
@@ -131,7 +131,7 @@ tr:nth-child(even){
   background-color: #c1c2c2;
 }
 tr:hover{
-  background-color: #009785;
+  background-color: #0047B6;
   color: white;
 }
 .empurrar{
@@ -186,7 +186,7 @@ td .btn{
   
 }
 .barraNav a:hover{
-  background-color: #009785;
+  background-color: #0047B6;
   color:white;
 
 }
@@ -194,7 +194,7 @@ td .btn{
 .titulo h1{
   display: block;
   float: left;
-  color:#006858;
+  color:#0047B6;
 }
 .titulo {
   width: 100%;
@@ -210,11 +210,11 @@ td .btn{
   width: 100px;
 }
 .btn-outline-success{
-  border-color: #009785 !important;
+  border-color: #0047B6 !important;
 }
  .btn-outline-success:hover{
   box-shadow: 0px 0px 0px 1px #c1c2c2;
-  background-color:#009785 !important;
+  background-color:#0047B6 !important;
   color:white !important;
 }
 .btn-outline-secondary:hover{
@@ -226,8 +226,8 @@ td .btn{
 }
  .btn-outline-success:not(:disabled):not(.disabled):active{
   color: #fff;
-  background-color: #009785 !important;
-  border-color: #009785 !important;
+  background-color: #0047B6 !important;
+  border-color: #0047B6 !important;
 }
 .row{
   margin-left: 0px !important;
@@ -303,7 +303,7 @@ td .btn{
 .boxtitle{
   font-size: 16px;
   text-align: center;
-  color:#006858;
+  color:#0047B6;
 }
 
 .w-3{
@@ -334,9 +334,13 @@ td .btn{
   /* overflow: auto; */
 }
 .boxContainer{
+  position: relative;
+  display: flex;
+  flex-direction: column;
   margin: 8px;
   padding: 15px;
-  border:1px dotted lightslategray
+  border:1px dotted lightslategray;
+  max-height:18rem
 }
 .boxfields{
   display: flex;
@@ -444,7 +448,7 @@ td .btn{
 }
 
 .MuiInput-underline:after{
-  border-bottom: 2px solid #006858 !important;
+  border-bottom: 2px solid #0047B6 !important;
 }
 
 .paginacao{
@@ -569,4 +573,9 @@ ul.pagination a.page-link:hover{
   border-radius: 6px;
   padding: 10px;
   margin:15px;
+}
+
+.rolagem{
+  overflow-x: hidden;
+  overflow-y: scroll;
 }

@@ -353,7 +353,7 @@ class Disponibilidade extends React.Component {
                                         <tbody>
                                             {this.state.listaCorrente.map(o => {
                                                 let focus = {}
-                                                if (o.id === this.state.id) focus = { backgroundColor: '#009785', color: "white" }
+                                                if (o.id === this.state.id) focus = { backgroundColor: '#0047B6', color: "white" }
                                                 return (
                                                     <tr style={focus} key={o.id} onClick={() => this.buscaItem(o.id)}>
                                                         <td>{o.id}</td>

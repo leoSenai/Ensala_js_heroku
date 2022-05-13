@@ -72,7 +72,7 @@ class Navegacao extends React.Component {
                 <Link to={(backPaste ? backPaste : "../") + "cadastro/professor"} onClick={() => this.cookieUrl("../cadastro/professor")}>Professor</Link>
                 <LinhaImaginaria permissao={this.props.user.permissao} linha="ADMINISTRADOR">
                     <Link to={(backPaste ? backPaste : "../") + "cadastro/modalidade"} onClick={() => this.cookieUrl("../cadastro/modalidade")}>Modalidade</Link>
-                    <Link to={(backPaste ? backPaste : "../") + "../cadastro/areaConhecimento"} onClick={() => this.cookieUrl("../cadastro/areaConhecimento")}>Área de conhecimento</Link>
+                    <Link to={(backPaste ? backPaste : "../") + "../cadastro/areaConhecimento"} onClick={() => this.cookieUrl("../cadastro/areaConhecimento")}>Segmento Tecnológico</Link>
                     <Link to={(backPaste ? backPaste : "../") + "../cadastro/unidadeCurricular"} onClick={() => this.cookieUrl("../cadastro/unidadeCurricular")}>Unidade curricular</Link>
                 </LinhaImaginaria>
                 <LinhaImaginaria permissao={this.props.user.permissao} linha="ADMINISTRADOR">
@@ -203,7 +203,7 @@ class Status extends React.Component {
 
 class LinhaImaginaria extends React.Component {
     render() {
-        return this.props.permissao == this.props.linha ? (<>{this.props.children}</>) : null
+        return this.props.permissao === this.props.linha ? (<>{this.props.children}</>) : null
     }
 }
 
@@ -313,7 +313,7 @@ class ModalDetalhe extends React.Component {
                             </div>
                             <div className="w-75">
                                 {modalidade.map((res, i) => {
-                                    if ((i + 1) == modalidade.length) {
+                                    if ((i + 1) === modalidade.length) {
                                         return res
                                     }
                                     return res + ", "
@@ -322,11 +322,11 @@ class ModalDetalhe extends React.Component {
                         </div>
                         <div className="flexbox competencia">
                             <div className="w-25 fontSmall">
-                                Area de conhecimento:
+                                Segmento tecnológico:
                             </div>
                             <div className="w-75">
                                 {areaConhecimento.map((res, i) => {
-                                    if ((i + 1) == areaConhecimento.length) {
+                                    if ((i + 1) === areaConhecimento.length) {
                                         return res
                                     }
                                     return res + ", "
@@ -364,10 +364,10 @@ class ModalDetalhe extends React.Component {
                             <tbody>
                                 {unidadeCurricular.map(o => {
                                     let focus = {}
-                                    if (destaque != undefined && destaque != null) {
+                                    if (destaque !== undefined && destaque !== null) {
                                         for (let i in destaque) {
                                             if (o.id === destaque[i].id) {
-                                                focus = { backgroundColor: '#009785', color: "white" }
+                                                focus = { backgroundColor: '#0047B6', color: "white" }
                                                 break
                                             }
                                         }
@@ -376,7 +376,7 @@ class ModalDetalhe extends React.Component {
                                         <tr style={focus} key={o.id}>
                                             <td>{o.id}</td>
                                             <td>{o.nome}</td>
-                                            <td>{o.descricao == "" ? " - " : o.descricao}</td>
+                                            <td>{o.descricao === "" ? " - " : o.descricao}</td>
                                         </tr>
                                     );
                                 })}
