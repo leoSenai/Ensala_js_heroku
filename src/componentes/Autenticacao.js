@@ -10,6 +10,7 @@ import Disponibilidade from '../telas/disponibilidade';
 import Competencia from '../telas/gerenciarCompetencia';
 import CadastroTelaInicial from '../telas/cadastroTelaInicial';
 import RelacionamentoUnidadeCurricular from '../telas/componentes/relacionamentoUnidadeCurricular';
+import RelacionamentoSegmentoTecnologico from '../telas/componentes/relacionamentoSegmentoTecnologico';
 import EsqueciMinhaSenha from '../telas/esqueciMinhaSenha';
 import FinalizarCadastro from '../telas/finalizarCadastro';
 import { AlterarSenha, AlterarSenhaFail } from '../telas/alterarSenha';
@@ -142,6 +143,9 @@ class Autenticacao extends React.Component {
                     </RotaPrivada>
                     <RotaPrivada inOut={inOut} path="/relacionamentoUnidadeCurricular/:id/:token" >
                       <RelacionamentoUnidadeCurricular user={value} />
+                    </RotaPrivada>
+                    <RotaPrivada inOut={inOut} path="/relacionamentoSegmentoTecnologico/:id/:token" >
+                      <RelacionamentoSegmentoTecnologico user={value} />
                     </RotaPrivada>
                     <RotaPrivada inOut={inOut} path="/cadastro/professor">
                       <Professor user={value} />

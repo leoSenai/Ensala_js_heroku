@@ -71,7 +71,7 @@ class Navegacao extends React.Component {
                 </LinhaImaginaria>
                 <Link to={(backPaste ? backPaste : "../") + "cadastro/professor"} onClick={() => this.cookieUrl("../cadastro/professor")}>Professor</Link>
                 <LinhaImaginaria permissao={this.props.user.permissao} linha="ADMINISTRADOR">
-                    <Link to={(backPaste ? backPaste : "../") + "cadastro/modalidade"} onClick={() => this.cookieUrl("../cadastro/modalidade")}>Modalidade</Link>
+                    <Link to={(backPaste ? backPaste : "../") + "../cadastro/modalidade"} onClick={() => this.cookieUrl("../cadastro/modalidade")}>Modalidade</Link>
                     <Link to={(backPaste ? backPaste : "../") + "../cadastro/areaConhecimento"} onClick={() => this.cookieUrl("../cadastro/areaConhecimento")}>Segmento Tecnológico</Link>
                     <Link to={(backPaste ? backPaste : "../") + "../cadastro/unidadeCurricular"} onClick={() => this.cookieUrl("../cadastro/unidadeCurricular")}>Unidade curricular</Link>
                 </LinhaImaginaria>

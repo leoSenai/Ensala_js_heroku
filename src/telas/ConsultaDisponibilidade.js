@@ -14,6 +14,9 @@ class ConsultaDisponibilidade extends React.Component {
         tarde: "",
         noite: "",
         pesquisa: "",
+        manhap:false,
+        tardep:false,
+        noitep:false,
         segunda: false,
         terca: false,
         quarta: false,
@@ -45,6 +48,9 @@ class ConsultaDisponibilidade extends React.Component {
         o.sexta = st.sexta
         o.sabado = st.sabado
         o.domingo = st.domingo
+        o.manha = st.manhap
+        o.tarde = st.tardep
+        o.noite = st.noitep
         let response = await POST("disponibilidade/listadisponibilidade/" + this.token, o)
         console.log(response)
         if (response != null && response != undefined) {
@@ -157,14 +163,16 @@ class ConsultaDisponibilidade extends React.Component {
             case "sexta": await this.setState(dia => ({ sexta: !dia.sexta })); break;
             case "sabado": await this.setState(dia => ({ sabado: !dia.sabado })); break;
             case "domingo": await this.setState(dia => ({ domingo: !dia.domingo })); break;
+            case "manhap": await this.setState(dia => ({ manhap: !dia.manhap })); break;
+            case "tardep": await this.setState(dia => ({ tardep: !dia.tardep })); break;
+            case "noitep": await this.setState(dia => ({ noitep: !dia.noitep })); break;
         }
         this.getListaProfessores()
     }
 
 
     render() {
-        const { loading, professor, pesquisa, manha, tarde, noite, segunda, terca, quarta, quinta, sabado, sexta, domingo, modalidade, areaConhecimento, unidadeCurricular } = this.state
-
+        const { loading, professor, pesquisa, manhap,tardep, noitep, manha, tarde, noite, segunda, terca, quarta, quinta, sabado, sexta, domingo, modalidade, areaConhecimento, unidadeCurricular } = this.state
         return <div>
             <Loading loading={loading} message='Carregando ...' />
             <div>
@@ -189,6 +197,23 @@ class ConsultaDisponibilidade extends React.Component {
                                         </Button>
                                     </InputGroupAddon>
                                 </InputGroup>
+                            </div>
+                        </div>
+                        <div className="flexbox filtroSemanaButtons">
+                            <div className="btn btn-outline-secondary w-142857143 boxtitle flexbox m-5 ">
+                                <div onClick={() => this.setcheck("manhap")} className="filtroDivSemana w-full" outline>Manhã
+                                    <Input checked={manhap} type="checkbox" id="check" name="check" className="checkSemana" />
+                                </div>
+                            </div>
+                            <div className="btn btn-outline-secondary w-142857143 boxtitle flexbox m-5 ">
+                                <div onClick={() => this.setcheck("tardep")} className="filtroDivSemana w-full" outline>Tarde
+                                    <Input checked={tardep} type="checkbox" id="check" name="check" className="checkSemana" />
+                                </div>
+                            </div>
+                            <div className="btn btn-outline-secondary w-142857143 boxtitle flexbox m-5 ">
+                                <div onClick={() => this.setcheck("noitep")} className="filtroDivSemana w-full" outline>Noite
+                                    <Input checked={noitep} type="checkbox" id="check" name="check" className="checkSemana" />
+                                </div>
                             </div>
                         </div>
                         <div className="flexbox filtroSemanaButtons">

@@ -8,7 +8,9 @@ import Paginacao from "../componentes/paginacao";
 import { BotaoEnviar, BotaoResetar } from "../componentes/botoes";
 import { POST, GET, PUT, DELETE, Loading } from "../componentes/Request";
 import { BarraInicial, ContainerFade, Navegacao, Cabecalho, BarraDePesquisa } from "../componentes/corpo"
-
+import {
+  withRouter
+} from "react-router-dom";
 class Modalidade extends React.Component {
   state = {
     id: "",
@@ -91,6 +93,7 @@ class Modalidade extends React.Component {
         this.setState({ loading: false })
       })
   }
+  
   // remover
   removerLinha = async (id) => {
     this.setState({ loading: true })
@@ -162,7 +165,11 @@ class Modalidade extends React.Component {
     }
   }
 
+  relacionar(id) {
+    this.props.history.push("/relacionamentoSegmentoTecnologico/" + id + "/" + this.token);
+  }
   render() {
+    console.log(this.props);
     const { loading, inicial, nome__, descricao__, nome, descricao } = this.state
 
     return <div>
@@ -239,6 +246,7 @@ class Modalidade extends React.Component {
                         <td>{o.id}</td>
                         <td>{o.nome}</td>
                         <td>{o.descricao.isEmpty() ? " - " : o.descricao}</td>
+                        <td className="acao" ><Button onClick={() => this.relacionar(o.id)}>Relacionar</Button></td>
                         <td className="acao" ><Button onClick={() => this.buscarPorId(o.id)}>Alterar</Button></td>
                         <td className="acao" ><Button onClick={() => { if (window.confirm("Deseja remover esse item? \n#" + o.id)) this.removerLinha(o.id) }}>Deletar</Button></td>
                       </tr>
@@ -278,5 +286,5 @@ class Modalidade extends React.Component {
   };
 }
 
-export default Modalidade
+export default withRouter(Modalidade)
 

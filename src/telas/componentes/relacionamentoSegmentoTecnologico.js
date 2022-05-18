@@ -1,5 +1,5 @@
 import React from "react";
-import {
+import { 
     Container, Row, Button
 } from "reactstrap";
 import { GET, Loading, POST } from "../../componentes/Request";
@@ -11,10 +11,10 @@ import {
     withRouter
 } from "react-router-dom";
 
-class RelacionamentoUnidadeCurricular extends React.Component {
+class RelacionamentoSegmentoTecnologico extends React.Component {
     state = {
-        areaConhecimento: {},
-        unidadeCurricular: [],
+        modalidade: {},
+        areaConhecimento: [],
         unidadeCurricularListaPesquisa: [],
         unidadeCurricularListaTouch: [],
         cacheUnidadeCurricular: [],
@@ -31,8 +31,8 @@ class RelacionamentoUnidadeCurricular extends React.Component {
         console.log(valor)
         await this.setState({
             unidadeCurricularListaTouch: valor,
-            unidadeCurricular:
-                this.state.unidadeCurricular.filter(value => {
+            areaConhecimento:
+                this.state.areaConhecimento.filter(value => {
                     if (valor === null | valor === undefined)
                         return true
                     return value.nome.includes(valor.nome) ? true : false
@@ -42,14 +42,14 @@ class RelacionamentoUnidadeCurricular extends React.Component {
     }
 
     async componentDidMount() {
-        let areaConhecimento = await GET("areaConhecimento/buscar/" + this.id + "/" + this.token)
-        console.log(areaConhecimento)
-        let unidadeCurricular = await GET("unidadeCurricular/listar/" + this.token)
+        let modalidade = await GET("modalidade/buscar/" + this.id + "/" + this.token)
+        console.log(modalidade)
+        let areaConhecimento = await GET("areaConhecimento/listar/" + this.token)
         this.setState({
+            modalidade: modalidade,
             areaConhecimento: areaConhecimento,
-            unidadeCurricular: unidadeCurricular,
-            cacheUnidadeCurricular: unidadeCurricular,
-            lista: areaConhecimento.unidadeCurricular.length > 0 ? areaConhecimento.unidadeCurricular : [],
+            cacheUnidadeCurricular: areaConhecimento,
+            lista: modalidade.areaconhecimento.length > 0 ? modalidade.areaconhecimento : [],
             loading: false
         })
         await this.atualizarLista()
@@ -57,10 +57,10 @@ class RelacionamentoUnidadeCurricular extends React.Component {
     }
 
     async atualizarLista() {
-        let areaConhecimento = await GET("areaConhecimento/buscar/" + this.id + "/" + this.token)
-        if (areaConhecimento.unidadeCurricular)
+        let modalidade = await GET("modalidade/buscar/" + this.id + "/" + this.token)
+        if (modalidade.areaConhecimento)
             await this.setState({
-                lista: areaConhecimento.unidadeCurricular.length > 0 ? areaConhecimento.unidadeCurricular : []
+                lista: modalidade.areaConhecimento.length > 0 ? modalidade.areaConhecimento : []
             })
         else
             await this.setState({
@@ -69,9 +69,9 @@ class RelacionamentoUnidadeCurricular extends React.Component {
     }
 
     async atualizarUnidadeCurricular() {
-        let unidadeCurricular = await GET("unidadeCurricular/listar/" + this.token)
+        let areaConhecimento = await GET("areaConhecimento/listar/" + this.token)
         this.setState({
-            unidadeCurricular: unidadeCurricular.filter((elem, id) => {
+            areaConhecimento: areaConhecimento.filter((elem, id) => {
                 return this.state.lista.filter((elemLista, idLista) => {
                     return elemLista.id == elem.id
                 }).length == 0
@@ -84,21 +84,21 @@ class RelacionamentoUnidadeCurricular extends React.Component {
             return elem.id !== id
         })
         if (decisao) {
-            await this.state.unidadeCurricular.filter((elem, index) => {
+            await this.state.areaConhecimento.filter((elem, index) => {
                 return elem.id === id
             }).forEach((elem, index) => {
                 if (elem.id == id) o.push(elem)
             })
         }
-        let req = this.state.areaConhecimento
-        req.unidadeCurricular = o
-        await POST("areaConhecimento/relacionar/" + this.token, req)
+        let req = this.state.modalidade
+        req.areaConhecimento = o
+        await POST("modalidade/relacionar/" + this.token, req)
         await this.atualizarLista()
         await this.atualizarUnidadeCurricular()
     }
 
     voltarAreaConhecimento() {
-        this.props.history.push("/cadastro/areaConhecimento")
+        this.props.history.push("/cadastro/modalidade")
     }
     organizaListaPorNome(lista) {
         return lista.sort((a, b) => {
@@ -106,7 +106,7 @@ class RelacionamentoUnidadeCurricular extends React.Component {
         })
     }
     render() {
-        const { areaConhecimento, unidadeCurricular, lista, loading, unidadeCurricularListaTouch } = this.state
+        const { modalidade, areaConhecimento, lista, loading, unidadeCurricularListaTouch } = this.state
         return (<>
             <Loading loading={loading} message='Carregando ...' />
             <div className="corpo">
@@ -125,14 +125,14 @@ class RelacionamentoUnidadeCurricular extends React.Component {
                                     <div className="w-25">
                                         <div className="caixa_detalhe disponivelDescriptionBox">
                                             <div style={{ textAlign: "center" }}>
-                                                Segmento Tecnológico
+                                                Modalidade
                                             </div>
                                             <div className="flexbox">
                                                 <div className="w-25">
                                                     <b>id:</b>
                                                 </div>
                                                 <div className="w-75">
-                                                    {areaConhecimento.id}
+                                                    {modalidade.id}
                                                 </div>
                                             </div>
                                             <div className="flexbox">
@@ -140,14 +140,14 @@ class RelacionamentoUnidadeCurricular extends React.Component {
                                                     <b>Nome:</b>
                                                 </div>
                                                 <div className="w-75">
-                                                    {areaConhecimento.nome}
+                                                    {modalidade.nome}
                                                 </div>
                                             </div>
                                             <div>
                                                 <div>
                                                     <b>Observação</b>
                                                 </div>
-                                                {areaConhecimento.descricao}
+                                                {modalidade.descricao}
                                             </div>
                                         </div>
                                     </div>
@@ -156,7 +156,7 @@ class RelacionamentoUnidadeCurricular extends React.Component {
                                             <div className="boxtitle">Unidade curricular</div>
                                             <div className="boxItens rolagem">
                                                 <Autocomplete
-                                                    options={unidadeCurricular}
+                                                    options={areaConhecimento}
                                                     value={unidadeCurricularListaTouch}
                                                     onChange={this.touchUnidadeCurricular}
                                                     getOptionLabel={(option) => option.nome}
@@ -170,7 +170,7 @@ class RelacionamentoUnidadeCurricular extends React.Component {
                                                     )}
                                                 />
                                                 {
-                                                    this.organizaListaPorNome(unidadeCurricular).map(res => {
+                                                    this.organizaListaPorNome(areaConhecimento).map(res => {
                                                         return (
                                                             <div onClick={() => this.click(res.id, true)} className="boxfields">
                                                                 <div className="fieldsLabelCenter">{res.nome}</div>
@@ -215,4 +215,4 @@ class RelacionamentoUnidadeCurricular extends React.Component {
     }
 }
 
-export default withRouter(RelacionamentoUnidadeCurricular)
+export default withRouter(RelacionamentoSegmentoTecnologico)

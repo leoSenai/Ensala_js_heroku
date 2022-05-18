@@ -174,6 +174,7 @@ class AreaConhecimento extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     const { loading, inicial, nome__, descricao__, nome, descricao } = this.state
 
     return <div>
