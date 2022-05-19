@@ -97,14 +97,25 @@ class Competencia extends React.Component {
                 response.modalidade.forEach(item => {
                     modalidade = this.setCheck(modalidade, item.id)
                 })
+                let areaConhecimento = []
 
-                let areaconhecimento = this.limparCheck(this.state.cacheAreaConhecimento)
-                response.areaconhecimento.forEach(item => {
-                    areaconhecimento = this.setCheck(areaconhecimento, item.id)
+                modalidade.forEach(elem => {
+                    const newListaArea = elem.areaConhecimento.filter(elem => {
+                        return areaConhecimento.filter(elemUnidade => {
+                            return elemUnidade.id === elem.id
+                        }).length === 0
+                    })
+                    if (elem.check) areaConhecimento = areaConhecimento.concat(newListaArea)
                 })
+                console.log("aqui", areaConhecimento)
+                areaConhecimento = this.limparCheck(areaConhecimento)
+                response.areaconhecimento.forEach(item => {
+                    areaConhecimento = this.setCheck(areaConhecimento, item.id)
+                })
+                console.log(areaConhecimento);
 
                 let unidadeCurricular = []
-                areaconhecimento.forEach(elem => {
+                areaConhecimento.forEach(elem => {
                     const newLista = elem.unidadeCurricular.filter(elem => {
                         return unidadeCurricular.filter(elemUnidade => {
                             return elemUnidade.id === elem.id
@@ -118,6 +129,8 @@ class Competencia extends React.Component {
                     unidadeCurricular = this.setCheck(unidadeCurricular, elem.id)
                 })
 
+                console.log(unidadeCurricular)
+
                 this.setState({
                     id: response.id,
                     nome: response.nome,
@@ -126,17 +139,14 @@ class Competencia extends React.Component {
                     email: response.email,
                     unidadeCurricular: unidadeCurricular,
                     cacheUnidadeCurricular: unidadeCurricular,
-                    unidadeCurricularListaPesquisa: unidadeCurricular
+                    unidadeCurricularListaPesquisa: unidadeCurricular,
+                    areaConhecimento: areaConhecimento
                 })
                 if (modalidade.length > 0)
                     this.setState({
                         modalidade: modalidade,
                     })
 
-                if (areaconhecimento.length > 0)
-                    this.setState({
-                        areaConhecimento: areaconhecimento,
-                    })
             }).catch(() => {
                 console.log(" errroooooooooooooooooooooooooooo ")
                 this.setState({
@@ -242,6 +252,7 @@ class Competencia extends React.Component {
         o.id = this.state.id;
         o.modalidade = this.ForEachItemArray(this.state.modalidade)
         await POST("competencia/inseremodalidade/" + this.token, o)
+        this.buscaItem(this.state.id)
     }
     async setAreaConhecimento() {
         let o = {}
@@ -317,7 +328,7 @@ class Competencia extends React.Component {
 
     render() {
         const { disableCheckbox, loading, unidadeCurricular, unidadeCurricularListaPesquisa, unidadeCurricularListaTouch, id, matricula, tipo, nome, email } = this.state
-
+        console.log(this.state)
         return <div>
             <Loading loading={loading} message='Carregando ...' />
             <div>
@@ -364,7 +375,7 @@ class Competencia extends React.Component {
                                                     })
                                                 }
                                                 {
-                                                    this.state.areaConhecimento.length > 0 ? <BarraInicial exec={false} message='' colspan="1" /> : <BarraInicial exec={true} message={(<span style={{ fontSize: "14px" }}>Não possui itens para carregar.</span>)} colspan="1" />
+                                                    this.state.modalidade.length > 0 ? <BarraInicial exec={false} message='' colspan="1" /> : <BarraInicial exec={true} message={(<span style={{ fontSize: "14px" }}>Não possui itens para carregar.</span>)} colspan="1" />
                                                 }
                                             </div>
                                         </div>
@@ -387,7 +398,7 @@ class Competencia extends React.Component {
                                                     })
                                                 }
                                                 {
-                                                    this.state.areaConhecimento.length > 0 ? <BarraInicial exec={false} message='' colspan="1" /> : <BarraInicial exec={true} message={(<span style={{ fontSize: "14px" }}>Não possui itens para carregar.</span>)} colspan="1" />
+                                                    this.state.areaConhecimento.length > 0 ? <BarraInicial exec={false} message='' colspan="1" /> : <BarraInicial exec={true} message={(<span style={{ fontSize: "14px" }}>Selecione uma modalidade</span>)} colspan="1" />
                                                 }
                                             </div>
                                         </div>
@@ -425,7 +436,7 @@ class Competencia extends React.Component {
                                                     })
                                                 }
                                                 {
-                                                    unidadeCurricular.length > 0 ? <BarraInicial exec={false} message='' colspan="1" /> : <BarraInicial exec={true} message={(<span style={{ fontSize: "14px" }}>Selecione uma Area de conhecimento.</span>)} colspan="1" />
+                                                    unidadeCurricular.length > 0 ? <BarraInicial exec={false} message='' colspan="1" /> : <BarraInicial exec={true} message={(<span style={{ fontSize: "14px" }}>Selecione um segmento tecnológico.</span>)} colspan="1" />
                                                 }
                                             </div>
                                         </div>

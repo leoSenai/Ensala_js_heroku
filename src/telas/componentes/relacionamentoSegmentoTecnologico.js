@@ -49,7 +49,7 @@ class RelacionamentoSegmentoTecnologico extends React.Component {
             modalidade: modalidade,
             areaConhecimento: areaConhecimento,
             cacheUnidadeCurricular: areaConhecimento,
-            lista: modalidade.areaconhecimento.length > 0 ? modalidade.areaconhecimento : [],
+            lista: modalidade.areaConhecimento.length > 0 ? modalidade.areaConhecimento : [],
             loading: false
         })
         await this.atualizarLista()
