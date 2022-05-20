@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Table } from "reactstrap";
 import { POST, GET, Loading } from "../componentes/Request";
-import { BarraInicial, ContainerFade, Navegacao, Cabecalho, BarraDePesquisa, ModalDetalhe } from "../componentes/corpo"
+import { BarraInicial, ContainerFade, Navegacao, Cabecalho, BarraDePesquisaPlus, ModalDetalhe } from "../componentes/corpo"
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
 import { ArrayCompare } from "../componentes/utilidadePublica";
@@ -381,11 +381,11 @@ class ConsultaCompetencia extends React.Component {
                         <div className="div_tabela">
                             <div className="barra_menu">
                                 <div className="w-50">
-                                    <BarraDePesquisa
+                                    <BarraDePesquisaPlus
                                         funcPesquisa={this.barraPesquisa.bind(this)}
                                         pesquisa={this.state.barraPesquisa}
                                         attBarra={this.preencheBarraDePesquisa.bind(this)}
-                                        indicador="nome"
+                                        indicadores={["nome","tipo"]}
                                         lista={this.state.listaCache} />
                                 </div>
                                 <div className="w-50">

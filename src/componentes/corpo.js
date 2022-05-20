@@ -20,12 +20,42 @@ class ContainerFade extends React.Component {
     }
 }
 
+class BarraDePesquisaPlus extends React.Component {
+    getPesquisa() {
+        const { funcPesquisa, pesquisa, indicadores, lista } = this.props
+
+        let novaLista = []
+        novaLista = lista.filter((value) => {
+            let ret = false;
+            for (let i = 0; i < indicadores.length; i++){
+                ret = (value[indicadores[i]].toString().toLowerCase().includes(pesquisa.toLowerCase()) ? true : false);
+            }
+            return ret;
+        })
+        funcPesquisa(novaLista)
+    }
+    handle(e) {
+        this.props.attBarra(e.target.value.toString())
+    }
+    render() {
+        return <InputGroup className="w-100">
+            <Input value={this.props.pesquisa} onChange={this.handle.bind(this)} name="pesquisa" placeholder="Pesquisar..." />
+            <InputGroupAddon addonType="append">
+                <Button color="secondary" onClick={() => this.getPesquisa()}>
+                    <FaSearch />
+                </Button>
+            </InputGroupAddon>
+        </InputGroup>
+    }
+}
+
 class BarraDePesquisa extends React.Component {
     getPesquisa() {
         const { funcPesquisa, pesquisa, indicador, lista } = this.props
 
         let novaLista = []
         novaLista = lista.filter((value) => {
+
             return value[indicador].toString().includes(pesquisa) ? true : false
         })
         funcPesquisa(novaLista)
@@ -424,4 +454,4 @@ class CampoObrigatório extends React.Component {
     }
 }
 
-export { EmailDeConfirmacao, BarraInicial, ContainerFade, Navegacao, Cabecalho, LinhaImaginaria, BarraDePesquisa, ModalDetalhe, CampoObrigatório }
+export { EmailDeConfirmacao, BarraInicial, ContainerFade, Navegacao, Cabecalho, LinhaImaginaria, BarraDePesquisa, BarraDePesquisaPlus, ModalDetalhe, CampoObrigatório }
