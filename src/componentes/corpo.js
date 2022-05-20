@@ -446,7 +446,7 @@ const EmailDeConfirmacao = (props) => {
     </>)
 }
 
-class CampoObrigatório extends React.Component {
+class CampoObrigatorio extends React.Component {
     render() {
         return <>
             <span style={{ color: "red" }}>*</span>
@@ -454,4 +454,4 @@ class CampoObrigatório extends React.Component {
     }
 }
 
-export { EmailDeConfirmacao, BarraInicial, ContainerFade, Navegacao, Cabecalho, LinhaImaginaria, BarraDePesquisa, BarraDePesquisaPlus, ModalDetalhe, CampoObrigatório }
+export { EmailDeConfirmacao, BarraInicial, ContainerFade, Navegacao, Cabecalho, LinhaImaginaria, BarraDePesquisa, BarraDePesquisaPlus, ModalDetalhe, CampoObrigatorio }

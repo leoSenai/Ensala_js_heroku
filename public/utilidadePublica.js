@@ -6,11 +6,11 @@ String.prototype.isEmail = function () {
     let dominio = this.substring(this.indexOf("@") + 1, this.length);
     return ((usuario.length >= 1) &&
         (dominio.length >= 3) &&
-        (usuario.indexOf("@") == -1) &&
-        (dominio.indexOf("@") == -1) &&
-        (usuario.indexOf(" ") == -1) &&
-        (dominio.indexOf(" ") == -1) &&
-        (dominio.indexOf(".") != -1) &&
+        (usuario.indexOf("@") === -1) &&
+        (dominio.indexOf("@") === -1) &&
+        (usuario.indexOf(" ") === -1) &&
+        (dominio.indexOf(" ") === -1) &&
+        (dominio.indexOf(".") !== -1) &&
         (dominio.indexOf(".") >= 1) &&
         (dominio.lastIndexOf(".") < dominio.length - 1))
 }

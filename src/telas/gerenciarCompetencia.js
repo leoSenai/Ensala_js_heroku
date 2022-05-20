@@ -188,7 +188,7 @@ class Competencia extends React.Component {
     async getModalidade() {
         this.carregamentoInicial()
         let response = await GET("competencia/pegamodalidades/" + this.token)
-        if (response != null && response != undefined) {
+        if (response !== null && response !== undefined) {
             this.setState({
                 modalidade: response,
                 cacheModalidade: response,
@@ -199,7 +199,7 @@ class Competencia extends React.Component {
     async getAreaConhecimento() {
         this.carregamentoInicial()
         let response = await GET("competencia/pegaareaconhecimentos/" + this.token)
-        if (response != null && response != undefined) {
+        if (response !== null && response !== undefined) {
             this.setState({
                 areaConhecimento: response,
                 cacheAreaConhecimento: response,
@@ -210,7 +210,7 @@ class Competencia extends React.Component {
     async getUnidadeCurricular() {
         this.carregamentoInicial()
         let response = await GET("competencia/pegaunidadecurriculares/" + this.token)
-        if (response != null && response != undefined) {
+        if (response !== null && response !== undefined) {
             this.setState({
                 unidadeCurricular: response,
                 cacheUnidadeCurricular: response,
@@ -222,13 +222,17 @@ class Competencia extends React.Component {
     }
 
     carregamentoInicial() {
+        let count = this.state.count
+        count++ 
         this.setState({
-            count: this.state.count++
+            count: count
         })
     }
     finalizarCarregamentoInicial() {
+        let count = this.state.count
+        count-- 
         this.setState({
-            count: this.state.count--
+            count: count
         })
         if (this.state.count == 0) {
             this.setState({

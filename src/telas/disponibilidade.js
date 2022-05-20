@@ -101,6 +101,14 @@ class Disponibilidade extends React.Component {
 
     }
 
+    altItem(b, v){
+        let items = this.state.item;
+        items[b] = v;
+        this.setState({
+            item: items
+        })
+    }
+
     compoemTabela(b, v) {
         if (typeof v !== 'object') {
             this.setState({
@@ -112,7 +120,7 @@ class Disponibilidade extends React.Component {
                 auxilar = false;
                 if (aProps[i] === b) {
                     auxilar = true;
-                    this.state.item[b] = v
+                    this.altItem(b,v);
                 }
             }
             if (this.state.html.length !== 0) {
@@ -139,7 +147,7 @@ class Disponibilidade extends React.Component {
     }
 
     attItem(v, e) {
-        this.state.item[e] = !v
+        this.altItem(e,!v)
         this.setState(html => ({
             html: html.html.splice(0, 1),
         }))
