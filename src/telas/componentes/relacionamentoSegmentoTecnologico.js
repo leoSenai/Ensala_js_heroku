@@ -73,8 +73,8 @@ class RelacionamentoSegmentoTecnologico extends React.Component {
         this.setState({
             areaConhecimento: areaConhecimento.filter((elem, id) => {
                 return this.state.lista.filter((elemLista, idLista) => {
-                    return elemLista.id == elem.id
-                }).length == 0
+                    return elemLista.id === elem.id
+                }).length === 0
             })
         })
     }
@@ -87,7 +87,7 @@ class RelacionamentoSegmentoTecnologico extends React.Component {
             await this.state.areaConhecimento.filter((elem, index) => {
                 return elem.id === id
             }).forEach((elem, index) => {
-                if (elem.id == id) o.push(elem)
+                if (elem.id === id) o.push(elem)
             })
         }
         let req = this.state.modalidade

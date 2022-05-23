@@ -53,7 +53,7 @@ class ConsultaDisponibilidade extends React.Component {
         o.noite = st.noitep
         let response = await POST("disponibilidade/listadisponibilidade/" + this.token, o)
         console.log(response)
-        if (response != null && response != undefined) {
+        if (response !== null && response !== undefined) {
             this.setState({
                 lista: response,
             })
@@ -111,7 +111,7 @@ class ConsultaDisponibilidade extends React.Component {
 
     pegaProfessor(id) {
         for (let item of this.state.lista) {
-            if (item.id == id) {
+            if (item.id === id) {
                 return item;
             }
         }
@@ -166,6 +166,7 @@ class ConsultaDisponibilidade extends React.Component {
             case "manhap": await this.setState(dia => ({ manhap: !dia.manhap })); break;
             case "tardep": await this.setState(dia => ({ tardep: !dia.tardep })); break;
             case "noitep": await this.setState(dia => ({ noitep: !dia.noitep })); break;
+            default: console.log("erro opcao"); break;
         }
         this.getListaProfessores()
     }

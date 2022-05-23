@@ -40,16 +40,21 @@ class ConsultaCompetencia extends React.Component {
     preencheBarraDePesquisa(barraPesquisa) { this.setState({ barraPesquisa }) }
 
     touchModalidade(e, valueModalidade) {
-        this.state.valueModalidade = this.amountList(valueModalidade)
+        this.setState({ 
+            valueModalidade: this.amountList(valueModalidade)
+        })
         this.getListaProfessores()
     }
     touchAreaConhecimento(e, valueAreaConhecimento) {
-        this.state.valueAreaConhecimento = this.amountList(valueAreaConhecimento)
-
+        this.setState({ 
+            valueAreaConhecimento: this.amountList(valueAreaConhecimento)
+        })
         this.getListaProfessores()
     }
     touchUnidadeCurricular(e, valueUnidadeCurricular) {
-        this.state.valueUnidadeCurricular = this.amountList(valueUnidadeCurricular)
+        this.setState({
+            valueUnidadeCurricular: this.amountList(valueUnidadeCurricular)
+        })
         this.getListaProfessores()
     }
 
@@ -154,7 +159,7 @@ class ConsultaCompetencia extends React.Component {
 
     pegaProfessor(id) {
         for (let item of this.state.lista) {
-            if (item.id == id) {
+            if (item.id === id) {
                 return item;
             }
         }
@@ -168,7 +173,7 @@ class ConsultaCompetencia extends React.Component {
         o.areaconhecimento = this.newArray(st.valueAreaConhecimento)
         o.unidadecurricular = this.newArray(st.valueUnidadeCurricular)
         let response = await POST("competencia/listarItens/" + this.token, o)
-        if (response != null && response != undefined) {
+        if (response !== null && response !== undefined) {
             this.setState({
                 lista: response,
                 listaCache: response,
@@ -203,7 +208,7 @@ class ConsultaCompetencia extends React.Component {
                     modalidade: [],
                 })
             }).finally(() => {
-                if (this.state.modalidade.length == 0) return false
+                if (this.state.modalidade.length === 0) return false
 
                 let lista = [];
                 for (let i in this.state.modalidade) {
@@ -234,7 +239,7 @@ class ConsultaCompetencia extends React.Component {
                     areaConhecimento: [],
                 })
             }).finally(() => {
-                if (this.state.areaConhecimento.length == 0) return false
+                if (this.state.areaConhecimento.length === 0) return false
 
                 let lista = [];
                 for (let i in this.state.areaConhecimento) {
@@ -265,7 +270,7 @@ class ConsultaCompetencia extends React.Component {
                     unidadeCurricular: [],
                 })
             }).finally(() => {
-                if (this.state.unidadeCurricular.length == 0) return false
+                if (this.state.unidadeCurricular.length === 0) return false
 
                 let lista = [];
                 for (let i in this.state.unidadeCurricular) {
@@ -427,7 +432,7 @@ class ConsultaCompetencia extends React.Component {
                                                     destaque={valueUnidadeCurricular}
                                                     id={o.id}
                                                     redirect={this.professorInfo.bind(this)}
-                                                    onClick={this.state.toggle = !this.state.toggle}
+                                                    onClick={() => this.setState({toggle:!this.state.toggle})}
                                                 />
                                             </tr>
                                         );

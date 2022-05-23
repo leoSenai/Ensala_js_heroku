@@ -234,7 +234,7 @@ class Competencia extends React.Component {
         this.setState({
             count: count
         })
-        if (this.state.count == 0) {
+        if (this.state.count === 0) {
             this.setState({
                 loading: false
             })
@@ -276,7 +276,7 @@ class Competencia extends React.Component {
     ForEachItemArray(list) {
         let aux = []
         this.filterCheck(list).forEach(item => {
-            if (item.check == true)
+            if (item.check === true)
                 aux.push({ 'id': item.id })
         });
         return aux;
@@ -284,14 +284,14 @@ class Competencia extends React.Component {
 
     filterCheck(lista) {
         return lista.filter(item => {
-            return item.check == true;
+            return item.check === true;
         })
     }
 
     setCheck(lista, id) {
         let novaLista = []
         lista.forEach(item => {
-            if (item.id == id) {
+            if (item.id === id) {
                 novaLista.push({ ...item, check: !item.check })
             } else {
                 novaLista.push({ ...item })
@@ -369,7 +369,7 @@ class Competencia extends React.Component {
                                                     this.organizaListaPorNome(this.state.modalidade).map(res => {
                                                         if (res.check === undefined) res.check = false;
                                                         return (
-                                                            <div onClick={disableCheckbox == false ? () => this.checkToggleModalidade(res.id) : null} className="boxfields">
+                                                            <div onClick={disableCheckbox === false ? () => this.checkToggleModalidade(res.id) : null} className="boxfields">
                                                                 <div className="fieldsLabel">{res.nome}</div>
                                                                 <div className="fieldsCheck">
                                                                     <Input disabled={disableCheckbox} checked={res.check} type="checkbox" id="check" className="checkCompetencia" name="check" />
@@ -392,7 +392,7 @@ class Competencia extends React.Component {
                                                     this.organizaListaPorNome(this.state.areaConhecimento).map(res => {
                                                         if (res.check === undefined) res.check = false;
                                                         return (
-                                                            <div onClick={disableCheckbox == false ? () => this.checkToggleAreaConhecimento(res.id) : null} className="boxfields">
+                                                            <div onClick={disableCheckbox === false ? () => this.checkToggleAreaConhecimento(res.id) : null} className="boxfields">
                                                                 <div className="fieldsLabel">{res.nome}</div>
                                                                 <div className="fieldsCheck">
                                                                     <Input disabled={disableCheckbox} checked={res.check} type="checkbox" id="check" className="checkCompetencia" name="check" />
@@ -430,7 +430,7 @@ class Competencia extends React.Component {
                                                     this.organizaListaPorNome(unidadeCurricular).map(res => {
                                                         if (res.check === undefined) res.check = false;
                                                         return (
-                                                            <div onClick={disableCheckbox == false ? () => this.checkToggleUnidadeCurricular(res.id) : null} className="boxfields">
+                                                            <div onClick={disableCheckbox === false ? () => this.checkToggleUnidadeCurricular(res.id) : null} className="boxfields">
                                                                 <div className="fieldsLabel">{res.nome}</div>
                                                                 <div className="fieldsCheck">
                                                                     <Input disabled={disableCheckbox} checked={res.check} type="checkbox" id="check" className="checkCompetencia" name="check" />

@@ -94,10 +94,10 @@ class Paginacao extends React.Component {
             <div className="limitePaginacao" style={{ marginLeft: "15px" }}>
                 <span style={{ fontSize: "11px", color: "rgba(0,0,0,.5)" }}>Nº Itens &nbsp;</span>
                 <ul className="pagination">
-                    <li className={"page-item "+(b10 ? "act" : "")} onClick={() => this.setBotoes(10)}><a className="page-link" onClick={() => this.setPageLimit(10)}>10</a></li>
-                    <li className={"page-item "+(b25 ? "act" : "")} onClick={() => this.setBotoes(25)}><a className="page-link" onClick={() => this.setPageLimit(25)}>25</a></li>
-                    <li className={"page-item "+(b50 ? "act" : "")} onClick={() => this.setBotoes(50)}><a className="page-link" onClick={() => this.setPageLimit(50)}>50</a></li>
-                    <li className={"page-item "+(b100 ? "act" : "")} onClick={() => this.setBotoes(100)}><a className="page-link" onClick={() => this.setPageLimit(100)}>100</a></li>
+                    <li className={"page-item "+(b10 ? "act" : "")} onClick={() => this.setBotoes(10)}><button className="page-link" onClick={() => this.setPageLimit(10)}>10</button></li>
+                    <li className={"page-item "+(b25 ? "act" : "")} onClick={() => this.setBotoes(25)}><button className="page-link" onClick={() => this.setPageLimit(25)}>25</button></li>
+                    <li className={"page-item "+(b50 ? "act" : "")} onClick={() => this.setBotoes(50)}><button className="page-link" onClick={() => this.setPageLimit(50)}>50</button></li>
+                    <li className={"page-item "+(b100 ? "act" : "")} onClick={() => this.setBotoes(100)}><button className="page-link" onClick={() => this.setPageLimit(100)}>100</button></li>
                 </ul>
             </div>
         </div>

@@ -85,10 +85,10 @@ class Autenticacao extends React.Component {
   }
 
   async setUserWithCookies() {
-    if (Cookies.get("id") == undefined ||
-      Cookies.get("usuario") == undefined ||
-      Cookies.get("permissao") == undefined ||
-      Cookies.get("token") == undefined)
+    if (Cookies.get("id") === undefined ||
+      Cookies.get("usuario") === undefined ||
+      Cookies.get("permissao") === undefined ||
+      Cookies.get("token") === undefined)
       return false;
 
     await this.setState({

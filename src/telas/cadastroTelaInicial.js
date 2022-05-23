@@ -92,11 +92,11 @@ class CadastroTelaInicial extends React.Component {
     }
 
     toggleModalConfirmacaoFunc(callback) {
-        if (callback != undefined)
+        if (callback !== undefined)
             this.setState({
                 toggleModalConfirmacao: callback,
             });
-        if (callback == false) window.location.href = "/";
+        if (callback === false) window.location.href = "/";
     }
 
     async reenviarEmail() {

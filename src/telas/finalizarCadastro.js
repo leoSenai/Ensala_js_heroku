@@ -43,7 +43,7 @@ class FinalizarCadastro extends React.Component {
             if (err.status >= 500)
                 err.text().then(errorMessage => {
                     console.log(errorMessage)
-                    if (errorMessage != undefined && errorMessage == "USUARIO_JA_CADASTRADO") {
+                    if (errorMessage !== undefined && errorMessage === "USUARIO_JA_CADASTRADO") {
                         alert("Seu cadastro ja foi efetuado, pode realizar seu login.")
                         window.location.href = "/";
                     }
