@@ -2,7 +2,7 @@ import React from "react";
 import { ArrayCompare } from "../componentes/utilidadePublica";
 import Paginacao from "../componentes/paginacao";
 import { Container, Input, Row, Table } from "reactstrap";
-import { Cabecalho, ContainerFade, Navegacao, BarraInicial, LinhaImaginaria, BarraDePesquisa } from "../componentes/corpo";
+import { Cabecalho, ContainerFade, Navegacao, BarraInicial, BarraInicialDiv, LinhaImaginaria, BarraDePesquisa } from "../componentes/corpo";
 import { GET, Loading, POST } from "../componentes/Request";
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import TextField from '@material-ui/core/TextField';
@@ -107,12 +107,10 @@ class Competencia extends React.Component {
                     })
                     if (elem.check) areaConhecimento = areaConhecimento.concat(newListaArea)
                 })
-                console.log("aqui", areaConhecimento)
                 areaConhecimento = this.limparCheck(areaConhecimento)
                 response.areaconhecimento.forEach(item => {
                     areaConhecimento = this.setCheck(areaConhecimento, item.id)
                 })
-                console.log(areaConhecimento);
 
                 let unidadeCurricular = []
                 areaConhecimento.forEach(elem => {
@@ -129,7 +127,6 @@ class Competencia extends React.Component {
                     unidadeCurricular = this.setCheck(unidadeCurricular, elem.id)
                 })
 
-                console.log(unidadeCurricular)
 
                 this.setState({
                     id: response.id,
@@ -332,7 +329,6 @@ class Competencia extends React.Component {
 
     render() {
         const { disableCheckbox, loading, unidadeCurricular, unidadeCurricularListaPesquisa, unidadeCurricularListaTouch, id, matricula, tipo, nome, email } = this.state
-        console.log(this.state)
         return <div>
             <Loading loading={loading} message='Carregando ...' />
             <div>
@@ -369,7 +365,7 @@ class Competencia extends React.Component {
                                                     this.organizaListaPorNome(this.state.modalidade).map(res => {
                                                         if (res.check === undefined) res.check = false;
                                                         return (
-                                                            <div onClick={disableCheckbox === false ? () => this.checkToggleModalidade(res.id) : null} className="boxfields">
+                                                            <div key={res.id} onClick={disableCheckbox === false ? () => this.checkToggleModalidade(res.id) : null} className="boxfields">
                                                                 <div className="fieldsLabel">{res.nome}</div>
                                                                 <div className="fieldsCheck">
                                                                     <Input disabled={disableCheckbox} checked={res.check} type="checkbox" id="check" className="checkCompetencia" name="check" />
@@ -379,7 +375,7 @@ class Competencia extends React.Component {
                                                     })
                                                 }
                                                 {
-                                                    this.state.modalidade.length > 0 ? <BarraInicial exec={false} message='' colspan="1" /> : <BarraInicial exec={true} message={(<span style={{ fontSize: "14px" }}>Não possui itens para carregar.</span>)} colspan="1" />
+                                                    this.state.modalidade.length > 0 ? <BarraInicialDiv exec={false} message='' /> : <BarraInicialDiv exec={true} message={(<span style={{ fontSize: "14px" }}>Não possui itens para carregar.</span>)} />
                                                 }
                                             </div>
                                         </div>
@@ -392,7 +388,7 @@ class Competencia extends React.Component {
                                                     this.organizaListaPorNome(this.state.areaConhecimento).map(res => {
                                                         if (res.check === undefined) res.check = false;
                                                         return (
-                                                            <div onClick={disableCheckbox === false ? () => this.checkToggleAreaConhecimento(res.id) : null} className="boxfields">
+                                                            <div key={res.id} onClick={disableCheckbox === false ? () => this.checkToggleAreaConhecimento(res.id) : null} className="boxfields">
                                                                 <div className="fieldsLabel">{res.nome}</div>
                                                                 <div className="fieldsCheck">
                                                                     <Input disabled={disableCheckbox} checked={res.check} type="checkbox" id="check" className="checkCompetencia" name="check" />
@@ -402,7 +398,7 @@ class Competencia extends React.Component {
                                                     })
                                                 }
                                                 {
-                                                    this.state.areaConhecimento.length > 0 ? <BarraInicial exec={false} message='' colspan="1" /> : <BarraInicial exec={true} message={(<span style={{ fontSize: "14px" }}>Selecione uma modalidade</span>)} colspan="1" />
+                                                    this.state.areaConhecimento.length > 0 ? <BarraInicialDiv exec={false} message=''  /> : <BarraInicialDiv exec={true} message={(<span style={{ fontSize: "14px" }}>Selecione uma modalidade</span>)} />
                                                 }
                                             </div>
                                         </div>
@@ -411,10 +407,10 @@ class Competencia extends React.Component {
                                         <div className="boxContainer">
                                             <div className="boxtitle">Unidade Curricular</div>
                                             <Autocomplete
-                                                options={unidadeCurricularListaPesquisa}
+                                                options={unidadeCurricularListaPesquisa }
                                                 value={unidadeCurricularListaTouch}
                                                 onChange={this.touchUnidadeCurricular}
-                                                getOptionLabel={(option) => option.nome}
+                                                getOptionLabel={(option) => option.nome? option.nome : ""}
                                                 renderInput={(params) => (
                                                     <TextField
                                                         {...params}
@@ -430,7 +426,7 @@ class Competencia extends React.Component {
                                                     this.organizaListaPorNome(unidadeCurricular).map(res => {
                                                         if (res.check === undefined) res.check = false;
                                                         return (
-                                                            <div onClick={disableCheckbox === false ? () => this.checkToggleUnidadeCurricular(res.id) : null} className="boxfields">
+                                                            <div key={res.id} onClick={disableCheckbox === false ? () => this.checkToggleUnidadeCurricular(res.id) : null} className="boxfields">
                                                                 <div className="fieldsLabel">{res.nome}</div>
                                                                 <div className="fieldsCheck">
                                                                     <Input disabled={disableCheckbox} checked={res.check} type="checkbox" id="check" className="checkCompetencia" name="check" />
@@ -440,7 +436,7 @@ class Competencia extends React.Component {
                                                     })
                                                 }
                                                 {
-                                                    unidadeCurricular.length > 0 ? <BarraInicial exec={false} message='' colspan="1" /> : <BarraInicial exec={true} message={(<span style={{ fontSize: "14px" }}>Selecione um segmento tecnológico.</span>)} colspan="1" />
+                                                    unidadeCurricular.length > 0 ? <BarraInicialDiv exec={false} message='' /> : <BarraInicialDiv exec={true} message={(<span style={{ fontSize: "14px" }}>Selecione um segmento tecnológico.</span>)} />
                                                 }
                                             </div>
                                         </div>

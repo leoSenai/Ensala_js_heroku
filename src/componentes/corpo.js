@@ -5,9 +5,7 @@ import logoSESI from './../img/sesi.png';
 import { Link } from "react-router-dom";
 import { GET } from "./Request";
 import Cookies from 'js-cookie';
-import { FaSearch, FaClipboard } from "react-icons/fa";
-
-
+import { FaSearch, FaClipboard, FaPlus, FaClipboardCheck } from "react-icons/fa";
 class ContainerFade extends React.Component {
     render() {
         return (
@@ -27,7 +25,7 @@ class BarraDePesquisaPlus extends React.Component {
         let novaLista = []
         novaLista = lista.filter((value) => {
             let ret = false;
-            for (let i = 0; i < indicadores.length; i++){
+            for (let i = 0; i < indicadores.length; i++) {
                 ret = (value[indicadores[i]].toString().toLowerCase().includes(pesquisa.toLowerCase()) ? true : false);
             }
             return ret;
@@ -75,13 +73,24 @@ class BarraDePesquisa extends React.Component {
     }
 }
 
+class BarraInicialDiv extends React.Component {
+    render() {
+        const { exec, message } = this.props
+        return exec ? (
+            <div>{message}</div>
+        ) : null
+    }
+}
+
 class BarraInicial extends React.Component {
     render() {
         const { exec, message, colspan } = this.props
         return exec ? (
-            <td colspan={colspan}>
-                {message}
-            </td>
+            <tr>
+                <td colSpan={colspan}>
+                    {message}
+                </td>
+            </tr>
         ) : null
     }
 }
@@ -97,7 +106,7 @@ class Navegacao extends React.Component {
         return <div className="barraNav">
             <Nav vertical>
                 <LinhaImaginaria permissao={this.props.user.permissao} linha="ADMINISTRADOR">
-                    <p className="subtituloMenu">Cadastros</p>
+                    <div className="subtituloMenu"><FaPlus />Cadastros</div>
                 </LinhaImaginaria>
                 <Link to={(backPaste ? backPaste : "../") + "cadastro/professor"} onClick={() => this.cookieUrl("../cadastro/professor")}>Professor</Link>
                 <LinhaImaginaria permissao={this.props.user.permissao} linha="ADMINISTRADOR">
@@ -106,13 +115,13 @@ class Navegacao extends React.Component {
                     <Link to={(backPaste ? backPaste : "../") + "../cadastro/unidadeCurricular"} onClick={() => this.cookieUrl("../cadastro/unidadeCurricular")}>Unidade curricular</Link>
                 </LinhaImaginaria>
                 <LinhaImaginaria permissao={this.props.user.permissao} linha="ADMINISTRADOR">
-                    <p className="subtituloMenu">Processos</p>
+                    <div className="subtituloMenu"><FaClipboardCheck />Processos</div>
                     <Link to={(backPaste ? backPaste : "../") + "processo/gerenciaremailsprofessores"} onClick={() => this.cookieUrl("../processo/gerenciaremailsprofessores")}>E-mails</Link>
                 </LinhaImaginaria>
                 <Link to={(backPaste ? backPaste : "../") + "processo/disponibilidade"} onClick={() => this.cookieUrl("../processo/disponibilidade")}>Disponibilidade</Link>
                 <Link to={(backPaste ? backPaste : "../") + "processo/competencia"} onClick={() => this.cookieUrl("../processo/competencia")}>Competência</Link>
                 <LinhaImaginaria permissao={this.props.user.permissao} linha="ADMINISTRADOR">
-                    <p className="subtituloMenu">Consultas</p>
+                    <div className="subtituloMenu"><FaSearch />Consultas</div>
                     <Link to={(backPaste ? backPaste : "../") + "consulta/consultadisponibilidade"} onClick={() => this.cookieUrl("../consulta/consultadisponibilidade")}>Disponibilidade</Link>
                     <Link to={(backPaste ? backPaste : "../") + "consulta/consultacompetencia"} onClick={() => this.cookieUrl("../consulta/consultacompetencia")}>Competência</Link>
                 </LinhaImaginaria>
@@ -454,4 +463,4 @@ class CampoObrigatorio extends React.Component {
     }
 }
 
-export { EmailDeConfirmacao, BarraInicial, ContainerFade, Navegacao, Cabecalho, LinhaImaginaria, BarraDePesquisa, BarraDePesquisaPlus, ModalDetalhe, CampoObrigatorio }
+export { EmailDeConfirmacao, BarraInicial, ContainerFade, Navegacao, Cabecalho, LinhaImaginaria, BarraDePesquisa, BarraDePesquisaPlus, ModalDetalhe, CampoObrigatorio, BarraInicialDiv }

@@ -52,7 +52,6 @@ class ConsultaDisponibilidade extends React.Component {
         o.tarde = st.tardep
         o.noite = st.noitep
         let response = await POST("disponibilidade/listadisponibilidade/" + this.token, o)
-        console.log(response)
         if (response !== null && response !== undefined) {
             this.setState({
                 lista: response,
@@ -202,56 +201,56 @@ class ConsultaDisponibilidade extends React.Component {
                         </div>
                         <div className="flexbox filtroSemanaButtons">
                             <div className="btn btn-outline-secondary w-142857143 boxtitle flexbox m-5 ">
-                                <div onClick={() => this.setcheck("manhap")} className="filtroDivSemana w-full" outline>Manhã
-                                    <Input checked={manhap} type="checkbox" id="check" name="check" className="checkSemana" />
-                                </div>
+                                <label htmlFor="manhap" className="filtroDivSemana w-full" outline="true">Manhã
+                                    <Input defaultChecked={manhap} onChange={() => this.setcheck("manhap")} type="checkbox" id="manhap" name="check" className="checkSemana" />
+                                </label>
                             </div>
                             <div className="btn btn-outline-secondary w-142857143 boxtitle flexbox m-5 ">
-                                <div onClick={() => this.setcheck("tardep")} className="filtroDivSemana w-full" outline>Tarde
-                                    <Input checked={tardep} type="checkbox" id="check" name="check" className="checkSemana" />
-                                </div>
+                                <label htmlFor="tardep" className="filtroDivSemana w-full" outline="true">Tarde
+                                    <Input defaultChecked={tardep} onChange={() => this.setcheck("tardep")} type="checkbox" id="tardep" name="check" className="checkSemana" />
+                                </label>
                             </div>
                             <div className="btn btn-outline-secondary w-142857143 boxtitle flexbox m-5 ">
-                                <div onClick={() => this.setcheck("noitep")} className="filtroDivSemana w-full" outline>Noite
-                                    <Input checked={noitep} type="checkbox" id="check" name="check" className="checkSemana" />
-                                </div>
+                                <label htmlFor="noitep" className="filtroDivSemana w-full" outline="true">Noite
+                                    <Input defaultChecked={noitep} onChange={() => this.setcheck("noitep")} type="checkbox" id="noitep" name="check" className="checkSemana" />
+                                </label>
                             </div>
                         </div>
                         <div className="flexbox filtroSemanaButtons">
                             <div className="btn btn-outline-secondary w-142857143 boxtitle flexbox m-5 ">
-                                <div onClick={() => this.setcheck("segunda")} className="filtroDivSemana w-full" outline>Segunda
-                                    <Input checked={segunda} type="checkbox" id="check" name="check" className="checkSemana" />
-                                </div>
+                                <label htmlFor="segunda" className="filtroDivSemana w-full" outline="true">Segunda
+                                    <Input defaultChecked={segunda} onChange={() => this.setcheck("segunda")} type="checkbox" id="segunda" name="check" className="checkSemana" />
+                                </label>
                             </div>
                             <div className="btn btn-outline-secondary w-142857143 boxtitle flexbox m-5 ">
-                                <div onClick={() => this.setcheck("terca")} className="filtroDivSemana w-full " outline>Terça
-                                    <Input checked={terca} type="checkbox" id="check" name="check" className="checkSemana" />
-                                </div>
+                                <label htmlFor="terca" className="filtroDivSemana w-full " outline="true">Terça
+                                    <Input defaultChecked={terca} onChange={() => this.setcheck("terca")} type="checkbox" id="terca" name="check" className="checkSemana" />
+                                </label>
                             </div>
                             <div className="btn btn-outline-secondary w-142857143 boxtitle flexbox m-5 ">
-                                <div onClick={() => this.setcheck("quarta")} className="filtroDivSemana w-full " outline>Quarta
-                                    <Input checked={quarta} type="checkbox" id="check" name="check" className="checkSemana" />
-                                </div>
+                                <label htmlFor="quarta" className="filtroDivSemana w-full " outline="true">Quarta
+                                    <Input defaultChecked={quarta} onChange={() => this.setcheck("quarta")} type="checkbox" id="quarta" name="check" className="checkSemana" />
+                                </label>
                             </div>
                             <div className="btn btn-outline-secondary w-142857143 boxtitle flexbox m-5 ">
-                                <div onClick={() => this.setcheck("quinta")} className="filtroDivSemana w-full " outline>Quinta
-                                    <Input checked={quinta} type="checkbox" id="check" name="check" className="checkSemana" />
-                                </div>
+                                <label htmlFor="quinta" className="filtroDivSemana w-full " outline="true">Quinta
+                                    <Input defaultChecked={quinta} onChange={() => this.setcheck("quinta")} type="checkbox" id="quinta" name="check" className="checkSemana" />
+                                </label>
                             </div>
                             <div className="btn btn-outline-secondary w-142857143 boxtitle flexbox m-5 ">
-                                <div onClick={() => this.setcheck("sexta")} className="filtroDivSemana w-full " outline>Sexta
-                                    <Input checked={sexta} type="checkbox" id="check" name="check" className="checkSemana" />
-                                </div>
+                                <label htmlFor="sexta" className="filtroDivSemana w-full " outline="true">Sexta
+                                    <Input defaultChecked={sexta} onChange={() => this.setcheck("sexta")} type="checkbox" id="sexta" name="check" className="checkSemana" />
+                                </label>
                             </div>
                             <div className="btn btn-outline-secondary w-142857143 boxtitle flexbox m-5 ">
-                                <div onClick={() => this.setcheck("sabado")} className="filtroDivSemana w-full " outline>Sabado
-                                    <Input checked={sabado} type="checkbox" id="check" name="check" className="checkSemana" />
-                                </div>
+                                <label htmlFor="sabado" className="filtroDivSemana w-full " outline="true">Sabado
+                                    <Input defaultChecked={sabado} onChange={() => this.setcheck("sabado")} type="checkbox" id="sabado" name="check" className="checkSemana" />
+                                </label>
                             </div>
                             <div className="btn btn-outline-secondary w-142857143 boxtitle flexbox m-5 ">
-                                <div onClick={() => this.setcheck("domingo")} className="filtroDivSemana w-full " outline>Domingo
-                                    <Input checked={domingo} type="checkbox" id="check" name="check" className="checkSemana" />
-                                </div>
+                                <label htmlFor="domingo" className="filtroDivSemana w-full " outline="true">Domingo
+                                    <Input defaultChecked={domingo} onChange={() => this.setcheck("domingo")} type="checkbox" id="domingo" name="check" className="checkSemana" />
+                                </label>
                             </div>
 
                         </div>
@@ -287,7 +286,7 @@ class ConsultaDisponibilidade extends React.Component {
                                                         || res.disponibilidade.sabM || res.disponibilidade.domM
                                                 }).map(res => {
                                                     return (
-                                                        <div className="boxfields">
+                                                        <div key={res.id} className="boxfields">
                                                             <div className="fieldsLabel">{res.nome}</div>
                                                             <div className="iconLabel">
                                                                 <ModalDetalhe
@@ -339,7 +338,7 @@ class ConsultaDisponibilidade extends React.Component {
                                                         || res.disponibilidade.sabT || res.disponibilidade.domT
                                                 }).map(res => {
                                                     return (
-                                                        <div className="boxfields">
+                                                        <div key={res.id} className="boxfields">
                                                             <div className="fieldsLabel">{res.nome}</div>
                                                             <div className="iconLabel">
                                                                 <ModalDetalhe
@@ -391,7 +390,7 @@ class ConsultaDisponibilidade extends React.Component {
                                                         || res.disponibilidade.sabN || res.disponibilidade.domN
                                                 }).map(res => {
                                                     return (
-                                                        <div className="boxfields">
+                                                        <div key={res.id}className="boxfields">
                                                             <div className="fieldsLabel">{res.nome}</div>
                                                             <div className="iconLabel">
                                                                 <ModalDetalhe

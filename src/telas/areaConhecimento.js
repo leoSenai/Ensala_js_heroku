@@ -174,7 +174,6 @@ class AreaConhecimento extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     const { loading, nome__, descricao__, nome, descricao } = this.state
 
     return <div>
@@ -240,7 +239,7 @@ class AreaConhecimento extends React.Component {
                     <th>#</th>
                     <th>Nome</th>
                     <th>Observação</th>
-                    <th className="acao" colspan='3' width="5%">Ação</th>
+                    <th className="acao" colSpan='3' width="5%">Ação</th>
                   </tr>
                 </thead>
                 <tbody>

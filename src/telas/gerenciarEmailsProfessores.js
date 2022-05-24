@@ -248,7 +248,7 @@ class GerenciarEmailsProfessores extends React.Component {
                 <thead>
                   <tr>
                     <th className="checkAll" width="7%">
-                      <Input checked={!checkBox} type="checkbox" id="check" className="checkmark" name="check" onClick={() => this.checkToggle()} />
+                    <Input defaultChecked={!checkBox} type="checkbox" id="check" className="checkmark" name="check" onClick={() => this.checkToggle()} />
                     </th>
                     <th width="10%">Matrícula</th>
                     <th width="10%">Tipo</th>
@@ -262,7 +262,7 @@ class GerenciarEmailsProfessores extends React.Component {
                     return (
                       <tr onClick={() => this.preencheCheckbox(o.id, o.check)} key={o.id}>
                         <td className="acao" >
-                          <Input checked={o.check} type="checkbox" id="check" className="checkmark" name="check" />
+                        <Input defaultChecked={o.check} type="checkbox" id="check" className="checkmark" name="check" />
                         </td>
                         <td>{o.matricula}</td>
                         <td>{o.tipo}</td>

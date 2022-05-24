@@ -71,9 +71,7 @@ class Disponibilidade extends React.Component {
         })
         GET("disponibilidade/buscarItem/" + id + "/" + this.token)
             .then(response => {
-                console.log(response.disponibilidade)
                 if (response.disponibilidade !== undefined) {
-                    console.log(response.id)
                     this.setState({
                         id: response.id,
                         nome: response.nome,
@@ -101,7 +99,7 @@ class Disponibilidade extends React.Component {
 
     }
 
-    altItem(b, v){
+    altItem(b, v) {
         let items = this.state.item;
         items[b] = v;
         this.setState({
@@ -120,7 +118,7 @@ class Disponibilidade extends React.Component {
                 auxilar = false;
                 if (aProps[i] === b) {
                     auxilar = true;
-                    this.altItem(b,v);
+                    this.altItem(b, v);
                 }
             }
             if (this.state.html.length !== 0) {
@@ -147,7 +145,7 @@ class Disponibilidade extends React.Component {
     }
 
     attItem(v, e) {
-        this.altItem(e,!v)
+        this.altItem(e, !v)
         this.setState(html => ({
             html: html.html.splice(0, 1),
         }))
@@ -226,11 +224,13 @@ class Disponibilidade extends React.Component {
                         </Row>
                         <Table>
                             <thead>
-                                <td className="acao" width="5%">id: {id === 0 ? "#" : id}</td>
-                                <td>Matrícula: {matricula === "" ? "#" : matricula}</td>
-                                <td>Nome: {nome === "" ? "#" : nome}</td>
+                                <tr>
+                                    <td>id: {id === 0 ? "#" : id}</td>
+                                    <td>Matrícula: {matricula === "" ? "#" : matricula}</td>
+                                    <td>Nome: {nome === "" ? "#" : nome}</td>
+                                </tr>
                                 <tr style={{ backgroundColor: "transparent", color: "black" }}>
-                                    <td style={{width: "15%"}}>Tipo: {tipo === "" ? "#" : tipo}</td>
+                                    <td style={{ width: "15%" }}>Tipo: {tipo === "" ? "#" : tipo}</td>
                                     <td>Ultima Alteração: {data === "" ? "#" : data.formatDate()}</td>
                                     <td>E-mail: {email === "" ? "#" : email}</td>
                                 </tr>

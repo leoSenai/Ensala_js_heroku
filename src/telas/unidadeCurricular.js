@@ -229,7 +229,7 @@ class UnidadeCurricular extends React.Component {
                                         <th>#</th>
                                         <th>Nome</th>
                                         <th>Observação</th>
-                                        <th className="acao" colspan='2' width="5%">Ação</th>
+                                        <th className="acao" colSpan='2' width="5%">Ação</th>
                                     </tr>
                                 </thead>
                                 <tbody>

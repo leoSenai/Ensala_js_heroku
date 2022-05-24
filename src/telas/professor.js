@@ -464,7 +464,7 @@ class Professor extends React.Component {
                     <th>Email</th>
                     <th>Telefone</th>
                     <th>Permissao</th>
-                    <th className="acao" colspan='2' width="5%">Ação</th>
+                    <th className="acao" colSpan='2' width="5%">Ação</th>
                   </tr>
                 </thead>
                 <tbody>

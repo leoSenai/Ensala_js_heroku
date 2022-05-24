@@ -30,7 +30,7 @@ class ConsultaCompetencia extends React.Component {
         listaCorrente: [],
         listaCache: [],
         barraPesquisa: "",
-        toggle:false
+        toggle: false
     }
     token = this.props.user.token
     touchModalidade = this.touchModalidade.bind(this);
@@ -40,13 +40,13 @@ class ConsultaCompetencia extends React.Component {
     preencheBarraDePesquisa(barraPesquisa) { this.setState({ barraPesquisa }) }
 
     touchModalidade(e, valueModalidade) {
-        this.setState({ 
+        this.setState({
             valueModalidade: this.amountList(valueModalidade)
         })
         this.getListaProfessores()
     }
     touchAreaConhecimento(e, valueAreaConhecimento) {
-        this.setState({ 
+        this.setState({
             valueAreaConhecimento: this.amountList(valueAreaConhecimento)
         })
         this.getListaProfessores()
@@ -390,7 +390,7 @@ class ConsultaCompetencia extends React.Component {
                                         funcPesquisa={this.barraPesquisa.bind(this)}
                                         pesquisa={this.state.barraPesquisa}
                                         attBarra={this.preencheBarraDePesquisa.bind(this)}
-                                        indicadores={["nome","tipo"]}
+                                        indicadores={["nome", "tipo"]}
                                         lista={this.state.listaCache} />
                                 </div>
                                 <div className="w-50">
@@ -421,19 +421,21 @@ class ConsultaCompetencia extends React.Component {
                                                 <td>{o.matricula}</td>
                                                 <td>{o.tipo}</td>
                                                 <td>{o.email}</td>
-                                                <ModalDetalhe
-                                                    professor={professor}
-                                                    manha={manha}
-                                                    tarde={tarde}
-                                                    noite={noite}
-                                                    modalidade={professorModalidade}
-                                                    areaConhecimento={professorAreaconhecimento}
-                                                    unidadeCurricular={professorUnidadecurricular}
-                                                    destaque={valueUnidadeCurricular}
-                                                    id={o.id}
-                                                    redirect={this.professorInfo.bind(this)}
-                                                    onClick={() => this.setState({toggle:!this.state.toggle})}
-                                                />
+                                                <td>
+                                                    <ModalDetalhe
+                                                        professor={professor}
+                                                        manha={manha}
+                                                        tarde={tarde}
+                                                        noite={noite}
+                                                        modalidade={professorModalidade}
+                                                        areaConhecimento={professorAreaconhecimento}
+                                                        unidadeCurricular={professorUnidadecurricular}
+                                                        destaque={valueUnidadeCurricular}
+                                                        id={o.id}
+                                                        redirect={this.professorInfo.bind(this)}
+                                                        onClick={() => this.setState({ toggle: !this.state.toggle })}
+                                                    />
+                                                </td>
                                             </tr>
                                         );
                                     })}
