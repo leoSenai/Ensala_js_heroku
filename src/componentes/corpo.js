@@ -5,7 +5,7 @@ import logoSESI from './../img/sesi.png';
 import { Link } from "react-router-dom";
 import { GET } from "./Request";
 import Cookies from 'js-cookie';
-import { FaSearch, FaClipboard, FaPlus, FaClipboardCheck } from "react-icons/fa";
+import { FaSearch, FaClipboard, FaPlus, FaClipboardCheck, FaPowerOff } from "react-icons/fa";
 class ContainerFade extends React.Component {
     render() {
         return (
@@ -23,13 +23,17 @@ class BarraDePesquisaPlus extends React.Component {
         const { funcPesquisa, pesquisa, indicadores, lista } = this.props
 
         let novaLista = []
+        console.log(indicadores)
         novaLista = lista.filter((value) => {
             let ret = false;
             for (let i = 0; i < indicadores.length; i++) {
+                console.log(value[indicadores[i]])
                 ret = (value[indicadores[i]].toString().toLowerCase().includes(pesquisa.toLowerCase()) ? true : false);
             }
+            console.log(ret)
             return ret;
         })
+        console.log(novaLista)
         funcPesquisa(novaLista)
     }
     handle(e) {
@@ -105,17 +109,15 @@ class Navegacao extends React.Component {
         const { backPaste } = this.props
         return <div className="barraNav">
             <Nav vertical>
-                <LinhaImaginaria permissao={this.props.user.permissao} linha="ADMINISTRADOR">
-                    <div className="subtituloMenu"><FaPlus />Cadastros</div>
-                </LinhaImaginaria>
+                <div className="subtituloMenu"><FaPlus />Cadastros</div>
                 <Link to={(backPaste ? backPaste : "../") + "cadastro/professor"} onClick={() => this.cookieUrl("../cadastro/professor")}>Professor</Link>
                 <LinhaImaginaria permissao={this.props.user.permissao} linha="ADMINISTRADOR">
                     <Link to={(backPaste ? backPaste : "../") + "../cadastro/modalidade"} onClick={() => this.cookieUrl("../cadastro/modalidade")}>Modalidade</Link>
                     <Link to={(backPaste ? backPaste : "../") + "../cadastro/areaConhecimento"} onClick={() => this.cookieUrl("../cadastro/areaConhecimento")}>Segmento Tecnológico</Link>
                     <Link to={(backPaste ? backPaste : "../") + "../cadastro/unidadeCurricular"} onClick={() => this.cookieUrl("../cadastro/unidadeCurricular")}>Unidade curricular</Link>
                 </LinhaImaginaria>
+                <div className="subtituloMenu"><FaClipboardCheck />Processos</div>
                 <LinhaImaginaria permissao={this.props.user.permissao} linha="ADMINISTRADOR">
-                    <div className="subtituloMenu"><FaClipboardCheck />Processos</div>
                     <Link to={(backPaste ? backPaste : "../") + "processo/gerenciaremailsprofessores"} onClick={() => this.cookieUrl("../processo/gerenciaremailsprofessores")}>E-mails</Link>
                 </LinhaImaginaria>
                 <Link to={(backPaste ? backPaste : "../") + "processo/disponibilidade"} onClick={() => this.cookieUrl("../processo/disponibilidade")}>Disponibilidade</Link>
@@ -126,7 +128,7 @@ class Navegacao extends React.Component {
                     <Link to={(backPaste ? backPaste : "../") + "consulta/consultacompetencia"} onClick={() => this.cookieUrl("../consulta/consultacompetencia")}>Competência</Link>
                 </LinhaImaginaria>
                 <hr />
-                <Link to={(backPaste ? backPaste : "../") + "logout"} onClick={() => this.cookieUrl("../logout")}><span style={{ width: "100%", display: "flex", justifyContent: "center" }}>Sair</span></Link>
+                <Link className="linkMenu" to={(backPaste ? backPaste : "../") + "logout"} onClick={() => this.cookieUrl("../logout")}><span style={{ width: "80%", display: "flex", justifyContent: "center" }}><FaPowerOff/>Sair</span></Link>
             </Nav>
         </div>
     };

@@ -45,6 +45,12 @@ class Login extends React.Component {
     this.logar(o);
   }
 
+  handleEnter(event) { 
+    if(event.keyCode === 13){
+      this.handleSubmit();
+    }
+  }
+
   cadastroProfessor() {
     this.props.history.push("/cadastroTelaInicial")
   }
@@ -72,7 +78,7 @@ class Login extends React.Component {
                 <Input placeholder="E-mail:" name="usuario" value={this.state.usuario} onChange={this.setUsuario.bind(this)} />
               </InputGroup>
               <InputGroup>
-                <Input type="password" className="empurrar" name="senha" placeholder="Senha:" value={this.state.senha} onChange={this.setSenha.bind(this)} />
+                <Input type="password" className="empurrar" onKeyUp={this.handleEnter.bind(this)} name="senha" placeholder="Senha:" value={this.state.senha} onChange={this.setSenha.bind(this)} />
               </InputGroup>
               <div className="botaoLogin">
                 <Button block onClick={this.handleSubmit.bind(this)} className="btn-login">Entrar</Button>
