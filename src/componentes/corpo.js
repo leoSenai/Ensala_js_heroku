@@ -23,17 +23,16 @@ class BarraDePesquisaPlus extends React.Component {
         const { funcPesquisa, pesquisa, indicadores, lista } = this.props
 
         let novaLista = []
-        console.log(indicadores)
         novaLista = lista.filter((value) => {
             let ret = false;
             for (let i = 0; i < indicadores.length; i++) {
-                console.log(value[indicadores[i]])
                 ret = (value[indicadores[i]].toString().toLowerCase().includes(pesquisa.toLowerCase()) ? true : false);
+                if(ret === true){
+                    return true
+                }
             }
-            console.log(ret)
             return ret;
         })
-        console.log(novaLista)
         funcPesquisa(novaLista)
     }
     handle(e) {

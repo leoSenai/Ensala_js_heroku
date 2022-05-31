@@ -390,7 +390,7 @@ class ConsultaCompetencia extends React.Component {
                                         funcPesquisa={this.barraPesquisa.bind(this)}
                                         pesquisa={this.state.barraPesquisa}
                                         attBarra={this.preencheBarraDePesquisa.bind(this)}
-                                        indicadores={["nome", "tipo"]}
+                                        indicadores={["nome", "tipo", "email"]}
                                         lista={this.state.listaCache} />
                                 </div>
                                 <div className="w-50">
