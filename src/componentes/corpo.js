@@ -5,7 +5,7 @@ import logoSESI from './../img/sesi.png';
 import { Link } from "react-router-dom";
 import { GET } from "./Request";
 import Cookies from 'js-cookie';
-import { FaSearch, FaClipboard, FaPlus, FaClipboardCheck, FaPowerOff } from "react-icons/fa";
+import { FaSearch, FaClipboard,FaSyncAlt, FaPowerOff, FaElementor } from "react-icons/fa";
 class ContainerFade extends React.Component {
     render() {
         return (
@@ -108,14 +108,14 @@ class Navegacao extends React.Component {
         const { backPaste } = this.props
         return <div className="barraNav">
             <Nav vertical>
-                <div className="subtituloMenu"><FaPlus />Cadastros</div>
+                <div className="subtituloMenu"><FaElementor />Cadastros</div>
                 <Link to={(backPaste ? backPaste : "../") + "cadastro/professor"} onClick={() => this.cookieUrl("../cadastro/professor")}>Professor</Link>
                 <LinhaImaginaria permissao={this.props.user.permissao} linha="ADMINISTRADOR">
                     <Link to={(backPaste ? backPaste : "../") + "../cadastro/modalidade"} onClick={() => this.cookieUrl("../cadastro/modalidade")}>Modalidade</Link>
                     <Link to={(backPaste ? backPaste : "../") + "../cadastro/areaConhecimento"} onClick={() => this.cookieUrl("../cadastro/areaConhecimento")}>Segmento Tecnológico</Link>
                     <Link to={(backPaste ? backPaste : "../") + "../cadastro/unidadeCurricular"} onClick={() => this.cookieUrl("../cadastro/unidadeCurricular")}>Unidade curricular</Link>
                 </LinhaImaginaria>
-                <div className="subtituloMenu"><FaClipboardCheck />Processos</div>
+                <div className="subtituloMenu"><FaSyncAlt />Processos</div>
                 <LinhaImaginaria permissao={this.props.user.permissao} linha="ADMINISTRADOR">
                     <Link to={(backPaste ? backPaste : "../") + "processo/gerenciaremailsprofessores"} onClick={() => this.cookieUrl("../processo/gerenciaremailsprofessores")}>E-mails</Link>
                 </LinhaImaginaria>
