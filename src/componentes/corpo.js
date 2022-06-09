@@ -23,13 +23,24 @@ class BarraDePesquisaPlus extends React.Component {
         const { funcPesquisa, pesquisa, indicadores, lista } = this.props
 
         let novaLista = []
+        
         novaLista = lista.filter((value) => {
             let ret = false;
             for (let i = 0; i < indicadores.length; i++) {
+                let listaTeste = value[indicadores[i]].toString().toLowerCase();
+                listaTeste = listaTeste.replaceAll(/[áàäâã]/g, "a");
+                listaTeste = listaTeste.replaceAll(/[éèëêẽ]/g, "e");
+                listaTeste = listaTeste.replaceAll(/[íìîĩï]/g, "i");
+                listaTeste = listaTeste.replaceAll(/[óòöôõ]/g, "o");
+                listaTeste = listaTeste.replaceAll(/[úùüûũ]/g, "u");
                 ret = (value[indicadores[i]].toString().toLowerCase().includes(pesquisa.toLowerCase()) ? true : false);
                 if(ret === true){
                     return true
                 }
+                if(listaTeste.includes(pesquisa.toLowerCase())){
+                    return true
+                }
+
             }
             return ret;
         })
