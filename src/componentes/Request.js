@@ -5,11 +5,12 @@ const base = process.env.REACT_APP_SERVER_URL;
 const door = process.env.REACT_APP_SERVER_PORT;
 const context = process.env.REACT_APP_SERVER_CONTEXT;
 const headers = { "Content-type": "application/x-www-form-urlencoded; charset=UTF-8" };
+
 export const POST = (path, o, f, callback) => {
     return fetch(base + door + context + path, {
         method: 'POST',
         headers: headers,
-        body: btoa(JSON.stringify(o))
+        body: Buffer.from(JSON.stringify(o)).toString("base64")
     }).then(result => {
         if (!result.ok) throw result;
         if (callback) callback(result.ok)
@@ -48,7 +49,7 @@ export const PUT = (path, o, f) => {
     return fetch(base + door + context + path, {
         method: 'PUT',
         headers: headers,
-        body: btoa(JSON.stringify(o))
+        body: Buffer.from(JSON.stringify(o)).toString("base64")
     }).then(result => {
         if (!result.ok) throw result;
         return result.json();
